@@ -1,10 +1,16 @@
 <!doctype html>
 <html lang="en">
+<!-- Head Start -->
 <head>
-<meta charset="utf-8">
-<title>Metamask Tester</title>
+  <meta charset="utf-8">
+  <title>Metamask Tester</title>
 </head>
+<!-- Head End -->
+
+<!-- Body Start -->
+<!-- startWeb3 function should start only after the webpage is loaded -->
 <body onload="startWeb3()">
+
 <h1>
 
 <span id="coinbase"></span><br>
@@ -18,75 +24,12 @@
 <span id="content7"></span><br>
 <span id="content8"></span><br>
 <span id="content9"></span><br>
-<span id="content10"></span><br>
+
 </h1>
 
 <script src="token.js"></script>
+<script src="main.js"></script>
 
-<script>
-
-var coinbase;
-var etherBalance;
-
-var myTokenContract;
-var myTokenBalance;
-var myTokenTotalSupply;
-var myTokenSymbol;
-
-function startWeb3() {
-
-coinbase = web3.eth.coinbase;
-
-
-getBalance(coinbase);
-
-myTokenContract = web3.eth.contract(myTokenABI).at(myTokenAddress);
-getTokenBalance(coinbase);
-
-
-document.getElementById("coinbase").innerHTML = coinbase;
-getTokenSymbol();
-
-
-}
-
-function getBalance (address) {
-  return web3.eth.getBalance(address, function (error, result) {
-    if (!error) {
-		document.getElementById("etherBalance").innerHTML = web3.fromWei(result, 'ether');
-		etherBalance = web3.fromWei(result, 'ether');
-    } else {
-      	console.error(error);
-    }
-  })
-}
-
-function getTokenBalance (address) {
-  return myTokenContract.balanceOf(address, function (error, result) {
-    if (!error) {
-		document.getElementById("myTokenBalance").innerHTML = web3.fromWei(result, 'ether');
-		myTokenBalance = result;
-    } else {
-      	console.error(error);
-    }
-  })
-}
-
-function getTokenSymbol() {
-  return myTokenContract.symbol(function (error, result) {
-    if (!error) {
-		document.getElementById("myTokenSymbol").innerHTML = result;
-		myTokenSymbol = result;
-    } else {
-      	console.error(error);
-    }
-  })
-}
-
-
-
-
-
-</script>
 </body>
+<!-- Body End -->
 </html>
