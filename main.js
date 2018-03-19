@@ -31,7 +31,7 @@ function startWeb3() {
 function getBalance(address) {
   return web3.eth.getBalance(address, function (error, result) {
     if (!error) {
-		document.getElementById("etherBalance").innerHTML = web3.fromWei(result, 'ether');
+		document.getElementById("etherBalance").innerHTML = web3.fromWei(result);
 		etherBalance = web3.fromWei(result, 'ether');
     } else {
       	console.error(error);
@@ -43,7 +43,7 @@ function getBalance(address) {
 function getTokenBalance(address) {
   return myTokenContract.balanceOf(address, function (error, result) {
     if (!error) {
-		document.getElementById("myTokenBalance").innerHTML = web3.fromWei(result, 'ether');
+		document.getElementById("myTokenBalance").innerHTML = web3.fromWei(result);
 		myTokenBalance = result;
     } else {
       	console.error(error);
