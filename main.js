@@ -31,8 +31,8 @@ function startWeb3() {
 function getBalance(address) {
   return web3.eth.getBalance(address, function (error, result) {
     if (!error) {
-		document.getElementById("etherBalance").innerHTML = web3.fromWei(result);
-		etherBalance = web3.fromWei(result, 'ether');
+		etherBalance = web3.fromWei(result);
+    document.getElementById("etherBalance").innerHTML = etherBalance;
     } else {
       	console.error(error);
     }
@@ -43,8 +43,8 @@ function getBalance(address) {
 function getTokenBalance(address) {
   return myTokenContract.balanceOf(address, function (error, result) {
     if (!error) {
-		document.getElementById("myTokenBalance").innerHTML = web3.fromWei(result);
-		myTokenBalance = result;
+		myTokenBalance = web3.fromWei(result);
+    document.getElementById("myTokenBalance").innerHTML = myTokenBalance;
     } else {
       	console.error(error);
     }
@@ -55,8 +55,8 @@ function getTokenBalance(address) {
 function getTokenSymbol() {
   return myTokenContract.symbol(function (error, result) {
     if (!error) {
-		document.getElementById("myTokenSymbol").innerHTML = result;
 		myTokenSymbol = result;
+    document.getElementById("myTokenSymbol").innerHTML = myTokenSymbol;
     } else {
       	console.error(error);
     }
