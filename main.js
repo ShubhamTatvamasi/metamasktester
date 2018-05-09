@@ -14,7 +14,7 @@ var myTokenSymbol;
 // Web3 start function, It will run when the web page is loaded
 function startWeb3() {
 
-  coinbase = web3.eth.coinbase;
+  coinbase = web3.eth.defaultAccount;
 
   getBalance(coinbase);
   document.getElementById("coinbase").innerHTML = coinbase;
